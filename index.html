@@ -1,0 +1,182 @@
+ <!doctype html>
+ <html lang="en">
+   <head>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+     <meta name="description" content="">
+     <meta name="author" content="">
+     <link rel="icon" href="./favicon.ico">
+ 
+     <title>한국 RN-BSN 학과장 협의회</title>
+ 
+     <!-- Bootstrap core CSS -->
+     <link href="./css/bootstrap.min.css" rel="stylesheet">
+ 
+     <!-- Custom styles for this template -->
+     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+     <link href="./css/blog.css" rel="stylesheet">
+     <style>
+       @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+       a {
+        font-family: 'Noto Sans KR', sans-serif;
+        font-weight: 300;
+       }
+		    svg .municipality { fill: #fff; stroke: #fff; }
+     </style>
+   </head>
+ 
+   <body>
+ 
+     <div class="container">
+       <header class="blog-header py-3">
+         <div class="row flex-nowrap justify-content-between align-items-center">
+           <div class="col-md-8 offset-md-2 text-center">
+             <a class="blog-header-logo text-dark" href="#">한국 RN-BSN 학과장 협의회</a>
+             <p class="blog-header-logo text-dark" style="font-size: 25px; font-weight: 100; padding-top: 10px; margin-bottom: 0px;">Korean association of RN-BSN</p>
+           </div>
+         </div>
+       </header>
+ 
+       <div class="nav-scroller py-1 mb-2">
+         <nav class="nav d-flex justify-content-between">
+            <a class="p-1 text-muted" href="#"></a>
+           <a class="p-2 text-muted" href="#">HOME</a>
+           <a class="p-2 text-muted" href="#">협의회 소개</a>
+           <a class="p-2 text-muted" href="#">협의회 회칙</a>
+           <a class="p-2 text-muted" href="#">회원 대학</a>
+           <a class="p-2 text-muted" href="#">학술 및 공지사항</a>
+           <a class="p-1 text-muted" href="#"></a>
+         </nav>
+       </div>
+ 
+       <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
+         <div class="col-md-12 px-0">
+            <div id="chart"></div>
+         </div>
+         <div class="col-md-12 px-0">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">서울</th>
+                    <th scope="col">경기</th>
+                    <th scope="col">충남</th>
+                    <th scope="col">강원</th>
+                    <th scope="col">부산</th>
+                    <th scope="col">대구</th>
+                    <th scope="col">광주</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>경희대학교</td>
+                    <td>차의과대학교</td>
+                    <td>건양대학교</td>
+                    <td>가톨릭관동대학교</td>
+                    <td>부산가톨릭대학교</td>
+                    <td>계명대학교</td>
+                    <td>조선대학교</td>
+                  </tr>
+                  <tr>
+                    <td>삼육대학교</td>
+                    <td>아주대학교</td>
+                    <td>공주대학교</td>
+                    <td>연세대학교(원주)</td>
+                    <td>인제대학교</td>
+                    <td>대구가톨릭대학교</td>
+                  </tr>
+                  <tr>
+                    <td>연세대학교</td>
+                  </tr>
+                  <tr>
+                    <td>한양대학교</td>
+                  </tr>
+                  <tr>
+
+
+                  </tr>
+                </tbody>
+              </table>
+         </div>
+       </div>
+ 
+     </main><!-- /.container -->
+     </div>
+     <footer class="blog-footer text-left">
+       <div class="container">
+         <div class="row">
+            <div class="col-md-3">
+                <h3>주소</h3>
+                <p>서울시 동대문구 경희대로26 경희대학교<br>
+                  간호과학대학 313호 (우 02447)<br>
+                  TEL: 02-961-0894 
+                  <br>E-mail: leejia@khu.ac.kr</p>
+             </div>
+             <div class="col-md-3 offset-1">
+                <h3>관련 사이트</h3>
+                <a href="http://www.kan.or.kr/">한국 간호 과학회</a>
+                <br>
+                <a href="http://khcns21.khu.ac.kr">경희대학교 간호과학대학</a>
+             </div>
+    
+         </div>
+
+       </div>
+
+     </footer>
+ 
+     <!-- Bootstrap core JavaScript
+     ================================================== -->
+     <!-- Placed at the end of the document so the pages load faster -->
+     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+     <script src="./js/popper.min.js"></script>
+     <script src="./js/bootstrap.min.js"></script>
+     <script src="./js/holder.min.js"></script>
+     <script src="https://d3js.org/d3.v3.min.js"></script>
+     <script src="https://d3js.org/topojson.v1.min.js"></script>
+     <script src="https://d3js.org/queue.v1.min.js"></script>
+     <script>
+       Holder.addTheme('thumb', {
+         bg: '#55595c',
+         fg: '#eceeef',
+         text: 'Thumbnail'
+       });
+
+		var width = 600, height=360;
+		var svg = d3.select("#chart").append("svg")
+					.attr("width", width).attr("height",height).attr("id", "map");
+					
+			var projection = d3.geo.mercator()
+							.center([128, 36])
+							.scale(3000)
+							.translate([width/2, height/2 - 20]);
+			
+			var path = d3.geo.path()
+							.projection(projection);
+							
+							
+			var quantize = d3.scale.quantize()
+				.domain([0, 1000])
+				.range(d3.range(9).map(function(i){
+					return "p" + i;
+				}));
+				
+			var popByName = d3.map();
+			
+			queue()
+				.defer(d3.json, "skorea_submunicipalities_topo_simple.json")
+				.await(ready);
+				
+			function ready(error, data){
+				var features = topojson.feature(data, data.objects["skorea_submunicipalities_geo"]).features;
+				svg.selectAll("path")
+					.data(features)
+					.enter().append("path")
+					.attr("class", function(d){return "municipality " + quantize(popByName.get(d.properties.name));})
+					.attr("d", path)
+					.attr("id", function(d) {return d.properties.name; });
+      }
+
+     </script>
+   </body>
+ </html>
+ 
