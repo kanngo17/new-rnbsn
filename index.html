@@ -14,15 +14,41 @@
  
      <!-- Custom styles for this template -->
      <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
-     <link href="./css/blog.css" rel="stylesheet">
      <style>
-       @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
-       a {
-        font-family: 'Noto Sans KR', sans-serif;
-        font-weight: 300;
-       }
-		    svg .municipality { fill: #fff; stroke: #fff; }
-     </style>
+      @import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
+      a {
+        color: #00A0B0;
+       font-family: 'Noto Sans KR', 'noto', 'notojp', 'notokr', Helvetica, 'Microsoft YaHei', 'Apple SD Gothic Neo', 'Malgun Gothic', '맑은 고딕', 'Dotum', '돋움', sans-serif, Arial;
+      }
+      p, td, th {
+       font-family: 'Noto Sans KR', 'noto', 'notojp', 'notokr', Helvetica, 'Microsoft YaHei', 'Apple SD Gothic Neo', 'Malgun Gothic', '맑은 고딕', 'Dotum', '돋움', sans-serif, Arial;
+      }
+      td {
+        font-size: 13px;
+      }
+       svg .municipality { fill: #fff; stroke: #fff; }
+      .jumbotron {
+        background-color: #6A4A3C;
+      }
+      
+      .text-muted {
+        font-weight: 400;
+        color: #00A0B0 !important;
+      }
+      .text-muted:hover {
+        text-decoration: none;
+        color: #22C2D2 !important;
+      }
+      .blog-header {
+        border-bottom: 1px solid #D7CCC8 !important;
+      }
+
+      .blog-footer {
+        background-color: #EFEBE9 !important;
+      }
+    </style>
+     <link href="./css/blog.css" rel="stylesheet">
+
    </head>
  
    <body>
@@ -40,16 +66,20 @@
        <div class="nav-scroller py-1 mb-2">
          <nav class="nav d-flex justify-content-between">
             <a class="p-1 text-muted" href="#"></a>
-           <a class="p-2 text-muted" href="#">HOME</a>
-           <a class="p-2 text-muted" href="#">협의회 소개</a>
-           <a class="p-2 text-muted" href="#">협의회 회칙</a>
-           <a class="p-2 text-muted" href="#">회원 대학</a>
-           <a class="p-2 text-muted" href="#">학술 및 공지사항</a>
+           <a class="p-2 text-muted" href="/">HOME</a>
+           <a class="p-2 text-muted" href="/intro.html">협의회 소개</a>
+           <a class="p-2 text-muted" href="/rules.html">협의회 회칙</a>
+           <a class="p-2 text-muted" href="/members.html">회원 대학</a>
+           <a class="p-2 text-muted" href="/notice.html">학술 및 공지사항</a>
            <a class="p-1 text-muted" href="#"></a>
          </nav>
        </div>
  
-       <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
+       <div class="jumbotron p-3 p-md-5 text-white rounded">
+          <div class="col-md-12 px-0">
+            <h4>회원 대학 현황</h4>
+            <br>
+          </div>
          <div class="col-md-12 px-0">
             <div id="chart"></div>
          </div>
@@ -174,6 +204,23 @@
 					.attr("class", function(d){return "municipality " + quantize(popByName.get(d.properties.name));})
 					.attr("d", path)
 					.attr("id", function(d) {return d.properties.name; });
+          d3.csv("amount2.csv", function(data) {
+					
+					//var circles = new Array();
+					
+					data.forEach(function(d) {
+						d3.select("#map").append("circle").attr("cx", projection([d.lgn, d.lat])[0])
+															.attr("cy", projection([d.lgn, d.lat])[1])
+															.attr("r", "2")
+															.attr("fill", "#CC333F");
+	
+					});
+					
+	
+				});
+				
+				
+
       }
 
      </script>
